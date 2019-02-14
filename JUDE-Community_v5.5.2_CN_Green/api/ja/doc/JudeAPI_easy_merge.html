@@ -1,0 +1,57 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <title>JUDE API 利用ガイド</title>
+</head>
+
+<body bgcolor="#F0F8FF">
+
+<h1>JUDE API 利用ガイド</h1>
+<hr>
+
+<h2>【簡単マージ】</h2>
+JUDE APIの簡単マージ機能は、JUDE/Professionalでサポートしています。
+
+<h3>【JUDE API で簡単マージする】</h3>
+以下の流れで参照プロジェクトを追加することができます。
+<p>
+<I>JUDEプロジェクトファイルのOPEN　→　簡単マージ　→　JUDEプロジェクトファイルとして保存</I>
+
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+    try {
+        ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+        
+        prjAccessor.open(&quot;C:\\API\\pro305.jude&quot;);
+        prjAccessor.easyMerge(&quot;C:\\API\\pro305_ref.jude&quot;, false);
+        
+        prjAccessor.saveAs(&quot;C:\\API\\pro305_2.jude&quot;); 
+        
+        prjAccessor.close();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+  }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+<hr>
+
+<a href="index.html">HOME</a>
+</body>
+</html>
+

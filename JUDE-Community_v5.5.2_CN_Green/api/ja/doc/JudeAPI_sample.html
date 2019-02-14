@@ -1,0 +1,83 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <title>JUDE API 利用ガイド</title>
+</head>
+
+<body bgcolor="#F0F8FF">
+
+<h1>JUDE API 利用ガイド</h1>
+<hr>
+
+
+<h2>【サンプルアプリケーションの説明】</h2>
+
+<h4>【ClassDefinitionExporter】</h4>
+JUDEプロジェクトファイルに含まれるクラスの情報を、CSV形式で出力します。
+クラスのフルパス名、属性および操作、定義、継承元、実現元の５つの項目が出力されます。
+
+<h4>コンパイルの方法</h4>
+利用するシステムのコマンドプロンプト、もしくはJavaのIDEツール（統合開発環境）などで、                                                                                                
+コンパイルします。この時、JUDEのインストールフォルダと、インストールフォルダに含まれるjude-api.jarに                                                                                                
+クラスパスを通す必要があります。<br>
+<br>
+サンプル:Windowsコマンドプロンプト用のバッチファイルcompile.batを用いたコンパイル方法<br>
+<br>
+<TABLE border="1">
+<tr>
+<td>
+C:\Program Files\JUDE-XXXXXXXXXX\api\sample\csvexporter&gt;compile<br>                 
+</td>
+</tr>
+</TABLE>
+<br>
+
+<br>
+<h4>実行の方法</h4>
+利用するシステムのコマンドプロンプト、もしくはJavaのIDEツール（統合開発環境）などで、                                                                                                
+第一引数としてJUDEプロジェクトファイル名を、第二引数として出力先となるcsv形式ファイル名を                                                                                                
+指定して実行します。この時、インストールフォルダに含まれるjude-api.jarとjude-community.jar(jude-pro.jar)に                                                                                                
+クラスパスを通す必要があります。<br>
+また、大きなJUDEプロジェクトファイルを扱う場合は、java実行環境に対するメモリーオプションを                                                                                                
+指定する必要があります。<br>
+<br>
+サンプル:Windowsコマンドプロンプト用のバッチファイルrun.batを用いた実行方法<br>
+<br>
+<TABLE border="1">
+<tr>
+<td>
+C:\Program Files\JUDE-XXXXXXXXXX\api\sample\csvexporter&gt;run ..\APISample.jude APISample.csv<br>                                                                                                
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h4>【ImportDBToJudeDialog】</h4>
+JUDE DBリバースツールでDBに接続し、JUDEモデルに変換するアプリケーションです。
+JUDE DBリバースツールの利用方法は<a href="../../db_reverse.html">JUDE DBリバースツール利用ガイド</a>をご覧ください。
+<font color="red">(このサンプルプログラムと利用ガイドはJUDE/Professionalでのみご利用いただけます。)</font>
+
+<h4>【JUDEモデルの参照、作成】</h4>
+JUDE インストールフォルダ配下のapi\sampleフォルダにJUDEモデルの参照、作成のサンプルアプリケーションが含まれています。
+<ol>
+<li>JUDEモデルの参照 : APIForReadingModelsSample.java</li>
+<li>JUDEモデルの作成 : APIForEditingModelsSample.java</li>
+</ol>
+
+<ul>
+<li><b>パッケージcom.change_vision.jude.api.test.modelのユニットテストのソースコード</b><br>
+<br>
+JUDE APIのユニットテストのソースコードです。JUDE APIを利用する上での参考としてご利用                                                                                             
+いただけます。
+</ul>
+<br>
+
+<hr>
+
+<a href="index.html">HOME</a>
+</body>
+</html>
+

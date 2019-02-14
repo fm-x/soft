@@ -1,0 +1,201 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <title>JUDE API 利用ガイド</title>
+</head>
+
+<body bgcolor="#F0F8FF">
+
+<h1>JUDE API 利用ガイド</h1>
+<hr>
+
+<h2>【参照プロジェクトの追加、更新、削除】</h2>
+JUDE APIの参照プロジェクト機能は、JUDE/Professionalでサポートしています。
+
+<h3>【JUDE API で参照プロジェクトを追加する】</h3>                 
+以下の流れで参照プロジェクトを追加することができます。
+<p>
+<I>JUDEプロジェクトファイルのOPEN　→　参照プロジェクトを追加　→　JUDEプロジェクトファイルとして保存</I>
+
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+    try {
+        ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+        
+        prjAccessor.open(&quot;C:\\API\\pro305.jude&quot;);
+        prjAccessor.addReferenceProject(&quot;C:\\API\\pro305_ref.jude&quot;);
+        
+        prjAccessor.saveAs(&quot;C:\\API\\pro305_2.jude&quot;); 
+        
+        prjAccessor.close();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+  }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h3>【JUDE API で参照プロジェクトを更新する】</h3>                 
+以下の流れで参照プロジェクトを更新することができます。
+<p>
+<I>JUDEプロジェクトファイルのOPEN　→　参照プロジェクトを更新　→　JUDEプロジェクトファイルとして保存</I>
+
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+    try {
+        ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+        
+        prjAccessor.open(&quot;C:\\API\\pro305.jude&quot;);
+        
+        String path = &quot;C:\\API\\pro305_ref.jude&quot;;
+        int status = prjAccessor.getReferenceProjectStatus(path);
+        if (status == ProjectAccessor.REFERENCE_PROJECT_STATUS_NEED_UPDATE) {
+            prjAccessor.updateReferenceProject(path);
+        }
+        prjAccessor.saveAs(&quot;C:\\API\\pro305_2.jude&quot;); 
+        
+        prjAccessor.close();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+  }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h3>【JUDE API で参照プロジェクトを削除する】</h3>                 
+以下の流れで参照プロジェクトを削除することができます。
+<p>
+<I>JUDEプロジェクトファイルのOPEN　→　参照プロジェクトを削除　→　JUDEプロジェクトファイルとして保存</I>
+
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+    try {
+        ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+        
+        prjAccessor.open(&quot;C:\\API\\pro305.jude&quot;);
+        prjAccessor.removeReferenceProject(&quot;C:\\API\\pro305_ref.jude&quot;);
+        
+        prjAccessor.saveAs(&quot;C:\\API\\pro305_2.jude&quot;); 
+        
+        prjAccessor.close();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+  }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h3>【JUDE API で参照プロジェクトを解除する】</h3>                 
+以下の流れで参照プロジェクトを解除することができます。
+<p>
+<I>JUDEプロジェクトファイルのOPEN　→　参照プロジェクトを解除　→　JUDEプロジェクトファイルとして保存</I>
+
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+    try {
+        ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+        
+        prjAccessor.open(&quot;C:\\API\\pro305.jude&quot;);
+        prjAccessor.clearReferenceProject(&quot;C:\\API\\pro305_ref.jude&quot;);
+        
+        prjAccessor.saveAs(&quot;C:\\API\\pro305_2.jude&quot;); 
+        
+        prjAccessor.close();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+  }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+
+<h3>【JUDE API で参照プロジェクトのパスを変更する】</h3>                 
+以下の流れで参照プロジェクトのパスを変更することができます。
+<p>
+<I>JUDEプロジェクトファイルのOPEN　→　参照プロジェクトのパスを変更　→　JUDEプロジェクトファイルとして保存</I>
+
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+import com.change_vision.jude.api.inf.project.ProjectAccessor;
+import com.change_vision.jude.api.inf.project.ProjectAccessorFactory;
+
+public class Test {
+  public static void main(String[] args) {
+    try {
+        ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+        
+        prjAccessor.open(&quot;C:\\API\\pro305.jude&quot;);
+        prjAccessor.changeReferenceProject(&quot;C:\\API\\pro305_ref.jude&quot;,&quot;C:\\API2\\pro305_ref.jude&quot;);
+        
+        prjAccessor.saveAs(&quot;C:\\API\\pro305_2.jude&quot;); 
+        
+        prjAccessor.close();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+  }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+<p>
+<hr>
+
+<a href="index.html">HOME</a>
+</body>
+</html>
+

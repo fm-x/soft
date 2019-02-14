@@ -1,0 +1,127 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <title>JUDE API 利用ガイド</title>
+</head>
+
+<body bgcolor="#F0F8FF">
+
+<h1>JUDE API 利用ガイド</h1>
+<hr>
+
+<h2>【モデルの作成方法】</h2>
+
+<p>ここでは、モデルの作成方法をサンプルプログラムを併用して、一部の例を紹介します。<br>
+各インターフェース、メソッドの詳細については、<a href="javadoc/index.html">
+JUDE APIのJavaDoc</a>をご覧ください。<br>
+JUDE APIのモデル作成機能は、JUDE/Professionalでサポートしています。                
+
+</p>
+
+<h4>【トランザクション操作】</h4>
+モデルを作成または編集する場合、トランザクション操作が必要です。
+TransacionManagerのbeginTransactionメソッドなどを用いることによって、トランザクション操作を実現できます。
+
+<h4>【ER図に関連するモデルの作成】</h4>
+ERModelEditorのcreateEREntityメソッドなどを用いることによって、ER図のERエンティティなどのモデルを作成できます。
+
+<h4>【クラス図に関連するモデルの作成】</h4>
+BasicModelEditorのcreateClassメソッドなどを用いることによって、クラス図のクラスなどのモデルを作成できます。
+
+<h4>【ユースケース図に関連するモデルの作成】</h4>
+UsseCaseModelEditorのcreateUseCaseメソッドなどを用いることによって、ユースケース図のユースケースなどのモデルを作成できます。
+
+<h4>【マインドマップに関連するモデルの作成】</h4>
+MindmapDiagramEditorのaddChildメソッドなどを用いることによって、マインドマップのトピックなどのモデルを作成・移動できます。
+
+<h4>【クラス図に関連するモデルの作成例】</h4>     
+パッケージ1つと配下のクラスを2つ、そして、その間の関連を作成します。
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+public class APIForEditingModelsSample {
+
+    public static void main(String[] args) {
+
+        try {
+            System.out.println(&quot;Creating new project...&quot;);
+
+            // プロジェクトを作成して、起点となるモデルを取得
+            ProjectAccessor prjAccessor = ProjectAccessorFactory.getProjectAccessor();
+            prjAccessor.create(&quot;./SampleModel.jude&quot;);
+            IModel project = prjAccessor.getProject();
+
+            System.out.println(&quot;Creating new elements in the project...&quot;);
+
+            // クラスなどのモデル要素を作成または編集する場合、まとまり単位としてトランザクション操作が必要
+            TransactionManager.beginTransaction();
+
+            // クラス関連のモデル要素を作成するエディタを取得
+            BasicModelEditor basicModelEditor = ModelEditorFactory.getBasicModelEditor();
+
+            // パッケージを作成
+            IPackage packageA = basicModelEditor.createPackage(project, &quot;PackageA&quot;);
+
+            // 指定のパッケージにクラスを作成
+            IClass classA = basicModelEditor.createClass(packageA, &quot;ClassA&quot;);
+            // クラスの定義を追加
+            classA.setDefinition(&quot;Definition of ClassA&quot;);
+            // クラスに属性を追加
+            basicModelEditor.createAttribute(classA, &quot;attribute0&quot;, &quot;int&quot;);
+            // クラスに操作を追加
+            basicModelEditor.createOperation(classA, &quot;operation0&quot;, &quot;void&quot;);
+
+            // 指定のパッケージにクラスを作成
+            IClass classB = basicModelEditor.createClass(packageA, &quot;ClassB&quot;);
+
+            // クラス間の関連を作成
+            basicModelEditor.createAssociation(classA, classB, &quot;association name&quot;,
+                    &quot;classA end&quot;, &quot;classB end&quot;);
+
+            // トランザクションの終了
+            TransactionManager.endTransaction();
+
+            // プロジェクトを保存
+            prjAccessor.save();
+
+            // プロジェクトを閉じる
+            prjAccessor.close();
+
+            System.out.println(&quot;Finished&quot;);
+
+        } catch (LicenseNotFoundException e) {
+            e.printStackTrace();
+        } catch (ProjectNotFoundException e) {
+            e.printStackTrace();
+        } catch (ProjectLockedException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InvalidEditingException e) {
+            // トランザクションの放棄
+            TransactionManager.abortTransaction();
+            // 不正編集の例外メッセージを取得
+            System.err.println(e.getMessage());
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (Throwable e) {
+            e.printStackTrace();
+        }
+    }
+}
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+
+<hr>
+
+<a href="index.html">HOME</a>
+</body>
+</html>
+

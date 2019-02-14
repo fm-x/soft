@@ -1,0 +1,78 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <title>JUDE API 利用ガイド</title>
+</head>
+
+<body bgcolor="#F0F8FF">
+
+<h1>JUDE API 利用ガイド</h1>
+<hr>
+
+<h2>【モデルの編集方法】</h2>
+
+ここでは、モデルの編集方法をサンプルプログラムを                                                  
+併用して、一部の例を紹介します。<br>
+クラス図とユースケース図に関連するモデルの詳細については、                                      
+<a href="javadoc/index.html">JUDE APIのJavaDoc</a>の&quot;Class and Usecase         
+Diagram Interface&quot;ページ、ER図に関連するモデルの詳細については、         
+&quot;ER Diagram Interface&quot;ページ、マインドマップに関連するモデルの詳細については、         
+&quot;Mindmap Interface&quot;ページをご覧ください。<br>
+JUDE APIのモデル編集機能は、JUDE/Professionalでサポートしています。              
+
+<p><i>クラス名と定義の編集</i>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+  try {
+      TransactionManager.beginTransaction();
+      BasicModelEditor bme = ModelEditorFactory.getBasicModelEditor();
+      //クラスを作成
+      IClass class0 = bme.createClass(project, &quot;class0&quot;);
+      //名前を設定
+      class0.setName(&quot;new class name&quot;);
+      //定義を設定
+      class0.setDefinition(&quot;Definition of the class&quot;);
+      TransactionManager.endTransaction();
+  } catch (InvalidEditingException e) {
+      TransactionManager.abortTransaction();
+ }
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+
+<p><i>ERエンティティ</i><i>の物理名の編集</i>
+<TABLE border="1">
+<tr>
+<td>
+<pre><samp>
+  IERModel erModel = (IERModel) getElement(project.getOwnedElements(), &quot;ER_Model&quot;);
+  schema = erModel.getSchemata()[0];
+  IEREntity[] entities = schema.getEntities();
+  for (int i = 0; i &lt; entities.length; i++) {
+      if (&quot;Entity0&quot;.equals(entities[i].getName())) {
+      try {
+         TransactionManager.beginTransaction();
+         //物理名を設定
+         entities[i].setPhysicalName(&quot;entity0 physical name&quot;);
+         TransactionManager.endTransaction();
+      } catch (InvalidEditingException e) {
+         TransactionManager.abortTransaction();
+      }
+  }
+</samp></pre>
+</td>
+</tr>
+</TABLE>
+
+<hr>
+
+<a href="index.html">HOME</a>
+</body>
+</html>
+

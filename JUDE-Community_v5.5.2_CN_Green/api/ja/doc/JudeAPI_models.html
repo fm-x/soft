@@ -1,0 +1,566 @@
+<!doctype html public "-//w3c//dtd html 4.0 transitional//en">
+
+<html>
+
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
+   <title>JUDE API 利用ガイド</title>
+</head>
+
+<body bgcolor="#F0F8FF">
+
+<h1>JUDE API 利用ガイド</h1>
+<hr>
+
+<h2>【対応モデル】</h2>
+下記のモデル情報の取扱いに対応します。
+<ul>
+<li>JUDE/Community : 参照</li>
+<li>JUDE/Professional : 参照、作成・編集</li>
+</ul>
+
+<h4>【クラス図とユースケース図】</h4>
+<table border="1" cellspacing="1" cellpadding="1" bordercolor="#cccccc">
+<tr>
+	<th>モデル</th>
+	<th>クラス</th>
+	<th>参照</th>
+	<th>作成・編集</th>
+</tr>
+<tr>
+	<td>クラス図</td>
+	<td>IClassDiagram</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>パッケージ</td>
+	<td>IPackage</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>モデル</td>
+	<td>IModel</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>サブシステム</td>
+	<td>ISubsystem</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>クラス</td>
+	<td>IClass</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>インターフェース</td>
+	<td>IClass</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>属性</td>
+	<td>IAttribute</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>操作</td>
+	<td>IOperation</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>パラメタ</td>
+	<td>IParameter</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>関連</td>
+	<td>IAssociation</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>関連クラス</td>
+	<td>IAssociationClass</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>汎化</td>
+	<td>IGeneralization</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>実現</td>
+	<td>IRealization</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>依存</td>
+	<td>IDependency</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>使用依存</td>
+	<td>IUsage</td>
+	<td>○</td>
+	<td>○</td>
+<tr>
+	<td>限定子</td>
+	<td>IAttribute</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>テンプレートパラメタ</td>
+	<td>IClassifierTemplateParameter</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>テンプレートバインディング</td>
+	<td>ITemplateBinding</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>ユースケース図</td>
+	<td>IUseCaseDiagram</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>アクター</td>
+	<td>IClass</td>
+	<td>○</td>
+	<td>○</td>
+</tr><tr>
+	<td>ユースケース</td>
+	<td>IUseCase</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>拡張</td>
+	<td>IExtend</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>拡張点</td>
+	<td>IExtentionPoint</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>包含</td>
+	<td>IInclude</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>タグ付き値</td>
+	<td>ITaggedValue</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>制約</td>
+	<td>IConstraint</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>多重度</td>
+	<td>IMultiplicityRange</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+</tr><tr>
+	<td>コメント</td>
+	<td>IComment</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+</table>	
+
+
+<h4> 【ステートマシン図】</h4>
+<table border="1" cellspacing="1" cellpadding="1" bordercolor="#cccccc">
+<tr>
+	<th>モデル</th>
+	<th>クラス</th>
+	<th>参照</th>
+	<th>作成・編集</th>
+</tr>
+<tr>
+	<td>ステートマシン図</td>
+	<td>IStatemachineDiagram</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>ステートマシン</td>
+	<td>IStateMachine</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>遷移</td>
+	<td>ITransition</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>状態</td>
+	<td>IState</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>各擬似状態</td>
+	<td>IPseudostate</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+</table>
+
+<h4>【アクティビティ図とフローチャート】</h4>
+<table border="1" cellspacing="1" cellpadding="1" bordercolor="#cccccc">
+<tr>
+	<th>モデル</th>
+	<th>クラス</th>
+	<th>参照</th>
+	<th>作成・編集</th>
+</tr>
+<tr>
+	<td>アクティビティ図</td>
+	<td>IActivityDiagram - isFlowChart()==false</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>パーティション</td>
+	<td>IPartition</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>アクション</td>
+	<td>IAction</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>アクティビティ</td>
+	<td>IActivity</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>アクティビティノード</td>
+	<td>IActivityNode</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>コントロールノード</td>
+	<td>IControlNode</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>オブジェクトノード</td>
+	<td>IObjectNode</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>フロー</td>
+	<td>IFlow</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>フローチャート</td>
+	<td>IActivityDiagram - isFlowChart()==true</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>フローチャートの基本要素</td>
+	<td>IActivityNode - ステレオタイプを付加</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+</table>
+
+<h4>【シーケンス図】</h4>
+<table border="1" cellspacing="1" cellpadding="1" bordercolor="#cccccc">
+<tr>
+	<th>モデル</th>
+	<th>クラス</th>
+	<th>参照</th>
+	<th>作成・編集</th>
+</tr>
+<tr>
+	<td>シーケンス図</td>
+	<td>ISequenceDiagram</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>ライフライン</td>
+	<td>ILifeline</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>メッセージ</td>
+	<td>IMessage</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>状態</td>
+	<td>IState</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>状態不変式</td>
+	<td>IStateInvariant</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>複合フラグメント</td>
+	<td>ICombinedFragment</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>相互作用</td>
+	<td>IInteraction</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>相互作用オペランド</td>
+	<td>IInteractionOperand</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>相互作用フラグメント</td>
+	<td>IInteractionFragment</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>相互作用の利用</td>
+	<td>IInteractionUse</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>ゲート</td>
+	<td>IGate</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+</table>
+
+<h4> 【ER図】</h4>
+<table border="1" cellspacing="1" cellpadding="1" bordercolor="#cccccc">
+<tr>
+	<th>モデル</th>
+	<th>クラス</th>
+	<th>参照</th>
+	<th>作成・編集</th>
+</tr>
+<tr>
+	<td>ER図</td>
+	<td>IERDiagram</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>ERモデル</td>
+	<td>IERModel</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>ERエンティティ</td>
+	<td>IEREntity</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+
+<tr>
+	<td>ER属性</td>
+	<td>IERAttribute</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>ERデータ型</td>
+	<td>IERDatatype</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>ERドメイン</td>
+	<td>IERDomain</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>ERリレーションシップ</td>
+	<td>IERRelationship</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>ERスキーマ</td>
+	<td>IERSchema</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>ERサブタイプリレーションシップ</td>
+	<td>IERSubtypeRelationship</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+</table>
+
+<h4> 【DFD】</h4>
+<table border="1" cellspacing="1" cellpadding="1" bordercolor="#cccccc">
+<tr>
+	<th>モデル</th>
+	<th>クラス</th>
+	<th>参照</th>
+	<th>作成・編集</th>
+</tr>
+<tr>
+	<td>DFD図</td>
+	<td>IDataFlowDiagram</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>プロセス</td>
+	<td>IProcessBox</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>外部エンティティ</td>
+	<td>IExternalEntity</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>データストア</td>
+	<td>IDataStore</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>アンカー</td>
+	<td>IAnchor</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>データフロー</td>
+	<td>IDataFlow</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+</table>
+
+<h4> 【CRUD】</h4>
+<table border="1" cellspacing="1" cellpadding="1" bordercolor="#cccccc">
+<tr>
+	<th>モデル</th>
+	<th>クラス</th>
+	<th>参照</th>
+	<th>作成・編集</th>
+</tr>
+<tr>
+	<td>CRUD図</td>
+	<td>IMatrixDiagram</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>ヘッダセル</td>
+	<td>IHeaderCell</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>値</td>
+	<td>IValueCell</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+</table>
+
+<h4>【マインドマップ】</h4>
+<table border="1" cellspacing="1" cellpadding="1" bordercolor="#cccccc">
+<tr>
+	<th>モデル</th>
+	<th>クラス</th>
+	<th>参照</th>
+	<th>作成・編集</th>
+</tr>
+<tr>
+	<td>マインドマップ</td>
+	<td>IMindMapDiagram</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+<tr>
+	<td>マインドマップ用プレゼンテーション</td>
+	<td>IPresentation</td>
+	<td>○</td>
+	<td>×</td>
+</tr>
+<tr>
+	<td>トピック</td>
+	<td>ITopicPresentation</td>
+	<td>○</td>
+	<td>○</td>
+</tr>
+</table>
+
+<br>
+※ステレオタイプは、文字列として扱われます。
+
+<h4>【制約事項】</h4>
+<ul>
+<li><b>上記以外の種類のモデル情報は取扱いできません。（上記の種類のモデルの図情報も含め、
+無いものとして扱われます。）</b>
+</ul>
+
+<hr>
+
+<a href="index.html">HOME</a>
+</body>
+</html>
+
